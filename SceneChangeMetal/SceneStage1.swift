@@ -19,7 +19,9 @@ var EYE_Z: Float =  5.0
 let TARGET_X: Float = 8.0
 let TARGET_Y: Float = 4.0
 let TARGET_Z: Float = 0.0
-
+let GOAL_X: Float = 30.0
+let STAGE_HEIGHT: Int = 14
+let STAGE_WIDTH: Int = 12
 class SceneStage1 : BaseScene {
     var character = Character()
     var characterPosition = float3(5.0,0.0,-8.0)
@@ -28,16 +30,91 @@ class SceneStage1 : BaseScene {
         Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
         Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
         Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:0.0,g:0.0,b:1.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+
     ]
     var translateDataHurdle: [Position] = [
-        Position(x:10.0,y:-2.0,z: -8.0 ),
-        Position(x:10.0,y:-1.0,z: -8.0 ),
-        Position(x:10.0,y: 0.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-2.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-1.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y: 0.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-2.0,z: -7.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-1.0,z: -7.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y: 0.0,z: -7.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-2.0,z: -6.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y:-1.0,z: -6.0 ),
+        Position(x:GOAL_X/3.0 * 1.0,y: 0.0,z: -6.0 ),
+        
+        Position(x:GOAL_X/3.0 * 2.0,y:-2.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y:-1.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 0.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 1.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 2.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 3.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 4.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 2.0,y: 5.0,z: -8.0 ),
+
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -8.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -7.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -6.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -5.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -4.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -3.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -2.0 ),
+        Position(x:GOAL_X/3.0 * 3.0,y: 0.0,z: -1.0 ),
+
     ]
     var originalDataHurdle: [[Original]] = [
         [Original(position: [0.0,0.0,0.0])],
         [Original(position: [0.0,0.0,0.0])],
         [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+
     ]
     var dynamicUniformBufferArrayHurdle: [MTLBuffer]?
     var uniformsArrayHurdle: [UnsafeMutablePointer<Uniforms>]?
@@ -59,14 +136,13 @@ class SceneStage1 : BaseScene {
     var target: float3 = float3(TARGET_X, TARGET_Y, TARGET_Z)
     var light : float3 = float3(0.0, 0.0, 0.0)
 
-    let GOAL_X: Float = 30.0
     var goalCount: Int = 0
     var labelGoal: UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
 
-    var buttonJumpY:  UIButton = UIButton(frame: CGRect(x: 200, y: 600, width: 70, height: 30))
-    var buttonJumpZ:  UIButton = UIButton(frame: CGRect(x: 200, y: 700, width: 70, height: 30))
+    var buttonJumpY:  UIButton = UIButton(frame: CGRect(x:   0, y: 600, width: 70, height: 30))
+    var buttonJumpZ:  UIButton = UIButton(frame: CGRect(x:   0, y: 700, width: 70, height: 30))
     var buttonLeft :  UIButton = UIButton(frame: CGRect(x:   0, y: 650, width: 70, height: 30))
-    var buttonRight:  UIButton = UIButton(frame: CGRect(x: 300, y: 650, width: 70, height: 30))
+    var buttonRight:  UIButton = UIButton(frame: CGRect(x: 100, y: 650, width: 70, height: 30))
 
     var leftButtonFlag: Bool = false
     var rightButtonFlag: Bool = false
@@ -75,8 +151,8 @@ class SceneStage1 : BaseScene {
         super.init(metalKitView: metalKitView)
         self.mtkView = metalKitView
         
-        for i in 0..<14 {
-            for j in -9..<9 {
+        for i in 0..<STAGE_HEIGHT {
+            for j in -STAGE_WIDTH..<STAGE_WIDTH {
                 if i % 2 == 0 {
                     if j % 2 == 0 {
                         cubeData.append(Cube(r:Float.random(in:0..<1),g:Float.random(in:0..<1),b:Float.random(in:0..<1),a:1.0,sx:1.0,sy:1.0,sz:1.0))
@@ -94,8 +170,8 @@ class SceneStage1 : BaseScene {
                 originalDataCube.append([Original(position: [0.0,0.0,0.0])])
             }
         }
-        for i in 0..<14 {
-            for j in -9..<9 {
+        for i in 0..<STAGE_HEIGHT {
+            for j in -STAGE_WIDTH..<STAGE_WIDTH {
                 if i % 2 == 0 {
                     if j % 2 == 0 {
                         cubeData.append(Cube(r:Float.random(in:0..<1),g:Float.random(in:0..<1),b:Float.random(in:0..<1),a:1.0,sx:1.0,sy:1.0,sz:1.0))
@@ -140,6 +216,10 @@ class SceneStage1 : BaseScene {
         buttonLeft.addGestureRecognizer(longPressLeft)
         buttonLeft.setTitle("Left", for: UIControl.State.normal)
         buttonLeft.setTitleColor(UIColor.red, for: UIControl.State.normal)
+        buttonLeft.backgroundColor = UIColor.white
+        buttonLeft.layer.borderWidth = 2.0
+        buttonLeft.layer.borderColor = UIColor.red.cgColor
+        buttonLeft.layer.cornerRadius = 5.0
         metalKitView.addSubview(buttonLeft)
         
         
@@ -148,18 +228,28 @@ class SceneStage1 : BaseScene {
         buttonRight.addGestureRecognizer(longPressRight)
         buttonRight.setTitle("Right", for: UIControl.State.normal)
         buttonRight.setTitleColor(UIColor.red, for: UIControl.State.normal)
+        buttonRight.backgroundColor = UIColor.white
+        buttonRight.layer.borderWidth = 2.0
+        buttonRight.layer.borderColor = UIColor.red.cgColor
+        buttonRight.layer.cornerRadius = 5.0
         metalKitView.addSubview(buttonRight)
 
         
         buttonJumpY.addTarget(self, action: #selector(jumpYButton), for: .touchDown)
         buttonJumpY.setTitle("jump", for: UIControl.State.normal)
         buttonJumpY.setTitleColor(UIColor.red, for: UIControl.State.normal)
-        buttonJumpY.backgroundColor = UIColor.blue
+        buttonJumpY.backgroundColor = UIColor.white
+        buttonJumpY.layer.borderWidth = 2.0
+        buttonJumpY.layer.borderColor = UIColor.red.cgColor
+        buttonJumpY.layer.cornerRadius = 5.0
         mtkView?.addSubview(buttonJumpY)
         buttonJumpZ.addTarget(self, action: #selector(jumpZButton), for: .touchDown)
         buttonJumpZ.setTitle("jump", for: UIControl.State.normal)
         buttonJumpZ.setTitleColor(UIColor.red, for: UIControl.State.normal)
-        buttonJumpZ.backgroundColor = UIColor.blue
+        buttonJumpZ.backgroundColor = UIColor.white
+        buttonJumpZ.layer.borderWidth = 2.0
+        buttonJumpZ.layer.borderColor = UIColor.red.cgColor
+        buttonJumpZ.layer.cornerRadius = 5.0
         mtkView?.addSubview(buttonJumpZ)
         
         labelGoal.isHidden = true
@@ -199,11 +289,36 @@ class SceneStage1 : BaseScene {
     }
 
     override func draw(in view: MTKView, pipelineState: MTLRenderPipelineState, depthStencilState: MTLDepthStencilState) {
-        if leftButtonFlag {
-            characterPosition.x -= 0.1
+        var hitRightFlag = false
+        for hurdle in translateDataHurdle {
+            if hurdle.x + 1.0 >= characterPosition.x + 1.0 &&
+               hurdle.x       <= characterPosition.x + 1.0 &&
+               hurdle.y + 1.0 >= characterPosition.y       &&
+               hurdle.y       <= characterPosition.y       &&
+               hurdle.z + 1.0 >= characterPosition.z       &&
+               hurdle.z       <= characterPosition.z
+            {
+                hitRightFlag = true
+            }
         }
         
-        if rightButtonFlag {
+        if leftButtonFlag && goalCount == 0 {
+            characterPosition.x -= 0.1
+            
+            var index = 0
+            for i in 0..<STAGE_HEIGHT * 2 {
+                for j in -STAGE_WIDTH..<STAGE_WIDTH {
+                    if translateDataCube[index].x > characterPosition.x + Float(STAGE_WIDTH) {
+                        cubeData[index].setColor(r:Float.random(in:0..<1),g:Float.random(in:0..<1),b:Float.random(in:0..<1),a:1.0)
+                        translateDataCube[index].x = round(characterPosition.x - Float(STAGE_WIDTH))
+                    }
+                    index += 1
+                }
+            }
+
+        }
+        
+        if rightButtonFlag && !hitRightFlag {
             characterPosition.x += 0.1
         }
         
@@ -225,7 +340,7 @@ class SceneStage1 : BaseScene {
 
         var index = 0
 
-        if characterPosition.x > GOAL_X + 10.0 {
+        if characterPosition.x > GOAL_X + Float(STAGE_WIDTH) {
             labelGoal.isHidden = false
             goalCount += 1
         }
@@ -234,9 +349,9 @@ class SceneStage1 : BaseScene {
         }
         if characterPosition.x > GOAL_X {
 
-            for i in 0..<14 {
-                for j in -9..<9 {
-                    if translateDataCube[index].x < characterPosition.x - 8.0 {
+            for i in 0..<STAGE_HEIGHT {
+                for j in -STAGE_WIDTH..<STAGE_WIDTH {
+                    if translateDataCube[index].x < characterPosition.x - Float(STAGE_WIDTH) {
                         if Float(i).truncatingRemainder(dividingBy: 2.0) == 0.0 {
                             if Float(j).truncatingRemainder(dividingBy: 2.0) == 0.0 {
                                 cubeData[index].setColor(r:0.0,g:0.0,b:0.0,a:1.0)
@@ -250,14 +365,14 @@ class SceneStage1 : BaseScene {
                                 cubeData[index].setColor(r:0.0,g:0.0,b:0.0,a:1.0)
                             }
                         }
-                        translateDataCube[index].x = round(characterPosition.x + 8.0)
+                        translateDataCube[index].x = round(characterPosition.x + Float(STAGE_WIDTH))
                     }
                     index += 1
                 }
             }
-            for i in 0..<14 {
-                for j in -9..<9 {
-                    if translateDataCube[index].x < characterPosition.x - 8.0 {
+            for i in 0..<STAGE_HEIGHT {
+                for j in -STAGE_WIDTH..<STAGE_WIDTH {
+                    if translateDataCube[index].x < characterPosition.x - Float(STAGE_WIDTH) {
                         if Float(i).truncatingRemainder(dividingBy: 2.0) == 0.0 {
                             if Float(j).truncatingRemainder(dividingBy: 2.0) == 0.0 {
                                 cubeData[index].setColor(r:1.0,g:1.0,b:1.0,a:1.0)
@@ -271,23 +386,22 @@ class SceneStage1 : BaseScene {
                                 cubeData[index].setColor(r:1.0,g:1.0,b:1.0,a:1.0)
                             }
                         }
-                        translateDataCube[index].x = round(characterPosition.x + 8.0)
+                        translateDataCube[index].x = round(characterPosition.x + Float(STAGE_WIDTH))
                     }
                     index += 1
                 }
             }
 
         } else {
-            for i in 0..<28 {
-                for j in -9..<9 {
-                    if translateDataCube[index].x < characterPosition.x - 8.0 {
+            for i in 0..<STAGE_HEIGHT * 2 {
+                for j in -STAGE_WIDTH..<STAGE_WIDTH {
+                    if translateDataCube[index].x < characterPosition.x - Float(STAGE_WIDTH) {
                         cubeData[index].setColor(r:Float.random(in:0..<1),g:Float.random(in:0..<1),b:Float.random(in:0..<1),a:1.0)
-                        translateDataCube[index].x = round(characterPosition.x + 8.0)
+                        translateDataCube[index].x = round(characterPosition.x + Float(STAGE_WIDTH))
                     }
                     index += 1
                 }
             }
-
         }
         
         
@@ -404,5 +518,12 @@ class SceneStage1 : BaseScene {
         commandBuffer?.commit()
         
     }
+    
+    override func setSize(size: CGSize) {
+        windowSize = size
+        buttonJumpY.frame.origin.x = size.width / 2 - 70.0
+        buttonJumpZ.frame.origin.x = size.width / 2 - 70.0
+    }
+
 
 }

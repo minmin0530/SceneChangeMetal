@@ -794,4 +794,8 @@ class Scene2: BaseScene {
 
         
     }
+    override func setSize(size: CGSize) {
+        windowSize = size
+    }
+
 }

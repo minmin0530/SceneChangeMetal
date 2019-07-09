@@ -65,4 +65,9 @@ class Scene1: BaseScene {
         commandBuffer?.commit()
 
     }
+    override func setSize(size: CGSize) {
+        windowSize = size
+        
+        buttonEnter.frame.origin.x = size.width / 4 - 70.0 / 2.0
+    }
 }

@@ -11,9 +11,13 @@ import MetalKit
 class BaseScene {
     var mtkView: MTKView?
     var changeScene = 0
+    var windowSize: CGSize?
     init(metalKitView: MTKView) {
     }
     
     func draw(in view: MTKView, pipelineState: MTLRenderPipelineState, depthStencilState: MTLDepthStencilState) {
+    }
+    
+    func setSize(size: CGSize) {
     }
 }

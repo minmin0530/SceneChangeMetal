@@ -68,6 +68,7 @@ class Renderer: NSObject, MTKViewDelegate {
 
         mtkView = metalKitView
         scene = Scene1(metalKitView: metalKitView)
+        
     }
  
     
@@ -128,23 +129,26 @@ class Renderer: NSObject, MTKViewDelegate {
         if scene?.changeScene == 1 {
             removeSubViews(mtkView: view)
             scene = Scene2(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
             scene?.changeScene = 0
         }
         if scene?.changeScene == 2 {
             removeSubViews(mtkView: view)
             scene = SceneStage1(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
             scene?.changeScene = 0
         }
         if scene?.changeScene == 3 {
             removeSubViews(mtkView: view)
             scene = Scene1(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
             scene?.changeScene = 0
         }
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         /// Respond to drawable size or orientation changes here
-        
+        scene?.setSize(size: size)
         let aspect = Float(size.width) / Float(size.height)
         projectionMatrix = matrix_perspective_right_hand(fovyRadians: radians_from_degrees(65), aspectRatio:aspect, nearZ: 0.1, farZ: 100.0)
     }
