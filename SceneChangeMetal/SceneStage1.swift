@@ -24,15 +24,35 @@ class SceneStage1 : BaseScene {
     var character = Character()
     var characterPosition = float3(5.0,0.0,-8.0)
 
+    var hurdleData:[Cube] = [
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+        Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+    ]
+    var translateDataHurdle: [Position] = [
+        Position(x:10.0,y:-2.0,z: -8.0 ),
+        Position(x:10.0,y:-1.0,z: -8.0 ),
+        Position(x:10.0,y: 0.0,z: -8.0 ),
+    ]
+    var originalDataHurdle: [[Original]] = [
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+        [Original(position: [0.0,0.0,0.0])],
+    ]
+    var dynamicUniformBufferArrayHurdle: [MTLBuffer]?
+    var uniformsArrayHurdle: [UnsafeMutablePointer<Uniforms>]?
+
     var cubeData:[Cube] = []
     var translateDataCube: [Position] = []
     var originalDataCube: [[Original]] = []
     var dynamicUniformBufferArrayCube: [MTLBuffer]?
+    var uniformsArrayCube: [UnsafeMutablePointer<Uniforms>]?
+
+    var projectionMatrix: matrix_float4x4 = matrix_float4x4()
+
     let inFlightSemaphore = DispatchSemaphore(value: maxBuffersInFlight)
     var uniformBufferOffset = 0
     var uniformBufferIndex = 0
-    var uniformsArrayCube: [UnsafeMutablePointer<Uniforms>]?
-    var projectionMatrix: matrix_float4x4 = matrix_float4x4()
 
     
     var eye   : float3 = float3(EYE_X, EYE_Y, EYE_Z)
@@ -103,6 +123,14 @@ class SceneStage1 : BaseScene {
             dynamicUniformBufferArrayCube?.append((metalKitView.device?.makeBuffer(length:uniformBufferSize, options:[MTLResourceOptions.storageModeShared])!)!)
             dynamicUniformBufferArrayCube![i].label = "UniformBufferCube"
             uniformsArrayCube?.append(UnsafeMutableRawPointer(dynamicUniformBufferArrayCube![i].contents()).bindMemory(to:Uniforms.self, capacity:1) )
+        }
+        
+        dynamicUniformBufferArrayHurdle = []
+        uniformsArrayHurdle = []
+        for i in 0..<hurdleData.count {
+            dynamicUniformBufferArrayHurdle?.append((metalKitView.device?.makeBuffer(length:uniformBufferSize, options:[MTLResourceOptions.storageModeShared])!)!)
+            dynamicUniformBufferArrayHurdle![i].label = "UniformBufferHurdle"
+            uniformsArrayHurdle?.append(UnsafeMutableRawPointer(dynamicUniformBufferArrayHurdle![i].contents()).bindMemory(to:Uniforms.self, capacity:1) )
         }
 
         
@@ -277,7 +305,6 @@ class SceneStage1 : BaseScene {
 
         for i in 0..<cubeData.count {
             uniformsArrayCube![i] = UnsafeMutableRawPointer(dynamicUniformBufferArrayCube![i].contents() + uniformBufferOffset).bindMemory(to:Uniforms.self, capacity:1)
-            let aspect = Float(UIScreen.main.bounds.size.width) / Float(UIScreen.main.bounds.size.height)
             projectionMatrix = matrix_perspective_right_hand(fovyRadians: radians_from_degrees(65), aspectRatio:aspect, nearZ: 0.1, farZ: 100.0)
             uniformsArrayCube![i][0].projectionMatrix = projectionMatrix
             let translateMatrix = matrix4x4_translation(translateDataCube[i].x,translateDataCube[i].y,translateDataCube[i].z)
@@ -286,6 +313,17 @@ class SceneStage1 : BaseScene {
             uniformsArrayCube![i][0].lightPosition = light
         }
 
+        for i in 0..<hurdleData.count {
+            uniformsArrayHurdle![i] = UnsafeMutableRawPointer(dynamicUniformBufferArrayHurdle![i].contents() + uniformBufferOffset).bindMemory(to:Uniforms.self, capacity:1)
+            projectionMatrix = matrix_perspective_right_hand(fovyRadians: radians_from_degrees(65), aspectRatio:aspect, nearZ: 0.1, farZ: 100.0)
+            uniformsArrayHurdle![i][0].projectionMatrix = projectionMatrix
+            let translateMatrix = matrix4x4_translation(translateDataHurdle[i].x,translateDataHurdle[i].y,translateDataHurdle[i].z)
+            let viewMatrix = matrix_lookAt(eye: eye, target: target, up:float3(0,1,0))
+            uniformsArrayHurdle![i][0].modelViewMatrix = simd_mul(viewMatrix, translateMatrix)
+            uniformsArrayHurdle![i][0].lightPosition = light
+        }
+
+        
         
         view.device = MTLCreateSystemDefaultDevice()
         guard let device = view.device else {
@@ -306,6 +344,17 @@ class SceneStage1 : BaseScene {
         for data in originalDataCube {
             originalBufferCube.append( device.makeBuffer(bytes: data, length: 16, options:[])! )
         }
+
+        
+        var vertexBufferHurdle :[MTLBuffer] = []
+        for i in 0..<hurdleData.count {
+            vertexBufferHurdle.append(device.makeBuffer(bytes: hurdleData[i].vertexData, length: 82 * hurdleData[i].vertexData.count, options:[])!)
+        }
+        var originalBufferHurdle: [MTLBuffer] = []
+        for data in originalDataHurdle {
+            originalBufferHurdle.append( device.makeBuffer(bytes: data, length: 16, options:[])! )
+        }
+
         
         let commandQueue = view.device?.makeCommandQueue()
         let commandBuffer = commandQueue?.makeCommandBuffer()
@@ -330,6 +379,15 @@ class SceneStage1 : BaseScene {
             renderCommandEncoder?.setVertexBuffer(data, offset: 0, index: 0)
             renderCommandEncoder?.setVertexBuffer(dynamicUniformBufferArrayCube![i], offset:uniformBufferOffset, index: BufferIndex.uniforms.rawValue)
             renderCommandEncoder?.setVertexBuffer(originalBufferCube[i], offset:0, index: BufferIndex.originalPositions.rawValue)
+            renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 36, instanceCount: 12)
+            i += 1
+        }
+
+        i = 0
+        for data in vertexBufferHurdle {
+            renderCommandEncoder?.setVertexBuffer(data, offset: 0, index: 0)
+            renderCommandEncoder?.setVertexBuffer(dynamicUniformBufferArrayHurdle![i], offset:uniformBufferOffset, index: BufferIndex.uniforms.rawValue)
+            renderCommandEncoder?.setVertexBuffer(originalBufferHurdle[i], offset:0, index: BufferIndex.originalPositions.rawValue)
             renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 36, instanceCount: 12)
             i += 1
         }
