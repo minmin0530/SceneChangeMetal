@@ -22,6 +22,10 @@
 		F45C399722CE148300315341 /* BebelCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399622CE148300315341 /* BebelCube.swift */; };
 		F45C399922D01BFC00315341 /* SceneStage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399822D01BFC00315341 /* SceneStage1.swift */; };
 		F45C399B22D047DB00315341 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399A22D047DB00315341 /* Character.swift */; };
+		F4CB916D22D5C8B300616C6C /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB916C22D5C8B300616C6C /* Stage.swift */; };
+		F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB916E22D5E7D000616C6C /* SceneStage2.swift */; };
+		F4CB917122D6077000616C6C /* SceneStage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917022D6077000616C6C /* SceneStage3.swift */; };
+		F4CB917322D7326000616C6C /* Enemy1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917222D7326000616C6C /* Enemy1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		F45C399622CE148300315341 /* BebelCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BebelCube.swift; sourceTree = "<group>"; };
 		F45C399822D01BFC00315341 /* SceneStage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage1.swift; sourceTree = "<group>"; };
 		F45C399A22D047DB00315341 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F4CB916C22D5C8B300616C6C /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		F4CB916E22D5E7D000616C6C /* SceneStage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage2.swift; sourceTree = "<group>"; };
+		F4CB917022D6077000616C6C /* SceneStage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage3.swift; sourceTree = "<group>"; };
+		F4CB917222D7326000616C6C /* Enemy1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +98,12 @@
 				F45C399222CE0A0C00315341 /* Matrix.swift */,
 				F45C399422CE147400315341 /* Cube.swift */,
 				F45C399622CE148300315341 /* BebelCube.swift */,
-				F45C399822D01BFC00315341 /* SceneStage1.swift */,
 				F45C399A22D047DB00315341 /* Character.swift */,
+				F4CB916C22D5C8B300616C6C /* Stage.swift */,
+				F45C399822D01BFC00315341 /* SceneStage1.swift */,
+				F4CB916E22D5E7D000616C6C /* SceneStage2.swift */,
+				F4CB917022D6077000616C6C /* SceneStage3.swift */,
+				F4CB917222D7326000616C6C /* Enemy1.swift */,
 			);
 			path = SceneChangeMetal;
 			sourceTree = "<group>";
@@ -167,10 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CB917122D6077000616C6C /* SceneStage3.swift in Sources */,
 				F45C397D22CDD0B800315341 /* Shaders.metal in Sources */,
 				F45C398F22CDD44F00315341 /* BaseScene.swift in Sources */,
 				F45C397922CDD0B800315341 /* Renderer.swift in Sources */,
 				F45C399B22D047DB00315341 /* Character.swift in Sources */,
+				F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */,
+				F4CB917322D7326000616C6C /* Enemy1.swift in Sources */,
 				F45C398D22CDD3A000315341 /* Scene1.swift in Sources */,
 				F45C399322CE0A0C00315341 /* Matrix.swift in Sources */,
 				F45C399522CE147400315341 /* Cube.swift in Sources */,
@@ -179,6 +194,7 @@
 				F45C399922D01BFC00315341 /* SceneStage1.swift in Sources */,
 				F45C397B22CDD0B800315341 /* GameViewController.swift in Sources */,
 				F45C397622CDD0B800315341 /* AppDelegate.swift in Sources */,
+				F4CB916D22D5C8B300616C6C /* Stage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

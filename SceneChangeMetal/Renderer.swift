@@ -144,6 +144,19 @@ class Renderer: NSObject, MTKViewDelegate {
             scene?.setSize(size: view.drawableSize)
             scene?.changeScene = 0
         }
+        if scene?.changeScene == 4 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage2(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = 0
+        }
+        if scene?.changeScene == 5 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage3(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = 0
+        }
+
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {

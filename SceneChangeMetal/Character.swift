@@ -11,7 +11,7 @@ import MetalKit
 class Character {
     var jumpSpeed: Float = 0.0
     var jumpSpeedZ: Float = 0.0
-    var gravity: Float = 0.01
+    var gravity: Float = 0.015
     var spinData: [Rotation] = [
         // head
         Rotation(axis: [ 0.0, 1.0, 0.0], angle: 0.0, speed: 0.01),
