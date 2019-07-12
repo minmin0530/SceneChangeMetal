@@ -441,8 +441,8 @@ class SceneStage3 : BaseScene {
     
     override func setSize(size: CGSize) {
         windowSize = size
-        buttonJumpY.frame.origin.x = size.width / 2 - 70.0
-        buttonJumpZ.frame.origin.x = size.width / 2 - 70.0
+        buttonJumpY.frame.origin.x = size.width / 3 - 70.0
+        buttonJumpZ.frame.origin.x = size.width / 3 - 70.0
     }
     
     
