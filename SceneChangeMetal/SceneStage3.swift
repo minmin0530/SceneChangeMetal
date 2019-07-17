@@ -10,6 +10,7 @@ import MetalKit
 class SceneStage3 : BaseScene {
     var character = Character()
     var characterPosition = float3(5.0,0.0,-8.0)
+    var characterFloor: Float = 0.0
     var enemy = Enemy1()
     var enemyPosition = float3(10.0,0.0,-8.0)
     
@@ -144,7 +145,9 @@ class SceneStage3 : BaseScene {
     var light : float3 = float3(0.0, 0.0, 0.0)
     
     var goalCount: Int = 0
-    var labelGoal: UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
+    var gameOverCount: Int = 0
+    var labelGoal:     UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
+    var labelGameOver: UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
     
     var buttonJumpY:  UIButton = UIButton(frame: CGRect(x:   0, y: 600, width: 70, height: 30))
     var buttonJumpZ:  UIButton = UIButton(frame: CGRect(x:   0, y: 700, width: 70, height: 30))
@@ -220,6 +223,12 @@ class SceneStage3 : BaseScene {
         labelGoal.font = UIFont.boldSystemFont(ofSize: 128.0)
         mtkView?.addSubview(labelGoal)
         
+        labelGameOver.isHidden = true
+        labelGameOver.text = "GameOver"
+        labelGameOver.textColor = UIColor.red
+        labelGameOver.font = UIFont.boldSystemFont(ofSize: 64.0)
+        mtkView?.addSubview(labelGameOver)
+        
     }
     
     @objc func longPressLeft(gesture: UILongPressGestureRecognizer) {
@@ -239,24 +248,42 @@ class SceneStage3 : BaseScene {
         }
     }
     @objc func jumpYButton(sender: UIButton){
-        character.jumpSpeed = 0.3
-        
-        //        changeScene = 3
-        print("jumpY")
+        if character.jumpFlag {
+            character.jumpSpeed = 0.3
+            character.jumpFlag = false
+        }
     }
     @objc func jumpZButton(sender: UIButton){
-        character.jumpSpeedZ = 0.3
-        //        changeScene = 3
-        print("jumpZ")
+        if character.jumpFlagZ {
+            character.jumpSpeedZ = 0.3
+            character.jumpFlagZ = false
+        }
     }
-    
+
     override func draw(in view: MTKView, pipelineState: MTLRenderPipelineState, depthStencilState: MTLDepthStencilState) {
-        
         if  enemy.live &&
             enemyPosition.x + 1.0 >= characterPosition.x + 0.0 &&
             enemyPosition.x       <= characterPosition.x + 1.0 &&
             enemyPosition.y + 1.0 >= characterPosition.y + 0.0 &&
             enemyPosition.y       <= characterPosition.y + 0.0 &&
+            enemyPosition.z + 1.0 >= characterPosition.z + 0.0 &&
+            enemyPosition.z       <= characterPosition.z + 0.0
+        {
+            character.jumpSpeed = 0.2
+            characterPosition.x -= 0.2
+            characterFloor = -5.0
+        }
+        
+        if characterFloor == -5.0 && characterPosition.y <= 0.0 {
+            gameOverCount += 1
+            labelGameOver.isHidden = false
+        }
+        
+        if  enemy.live &&
+            enemyPosition.x + 1.0 >= characterPosition.x + 0.0 &&
+            enemyPosition.x       <= characterPosition.x + 1.0 &&
+            enemyPosition.y + 2.0 >= characterPosition.y + 0.0 &&
+            enemyPosition.y + 1.0 <= characterPosition.y + 0.0 &&
             enemyPosition.z + 1.0 >= characterPosition.z + 0.0 &&
             enemyPosition.z       <= characterPosition.z + 0.0
         {
@@ -298,37 +325,39 @@ class SceneStage3 : BaseScene {
         }
         
         
-        if leftButtonFlag && goalCount == 0 && !hitLeftFlag && characterPosition.x > -2.0 {
+        if leftButtonFlag && goalCount == 0 && !hitLeftFlag && characterPosition.x > -2.0 && characterFloor == 0.0 {
             characterPosition.x -= 0.1
             
             stage.updateLeft(characterPosition: characterPosition)
         }
         
-        if rightButtonFlag && !hitRightFlag {
+        if rightButtonFlag && !hitRightFlag && characterFloor == 0.0  {
             characterPosition.x += 0.1
         }
         
         eye.x = characterPosition.x
         target.x = characterPosition.x
         
-        characterPosition.y += character.jumpSpeed
-        character.jumpSpeed -= character.gravity
-        characterPosition.z += character.jumpSpeedZ
+        character.jumpSpeed  -= character.gravity
         character.jumpSpeedZ -= character.gravity
-        if characterPosition.y < 0.0 {
-            characterPosition.y = 0.0
+        characterPosition.y += character.jumpSpeed
+        characterPosition.z += character.jumpSpeedZ
+        if characterPosition.y < characterFloor {
+            characterPosition.y = characterFloor
             character.jumpSpeed = 0.0
+            character.jumpFlag = true
         }
         if characterPosition.z < -8.0 {
             characterPosition.z = -8.0
             character.jumpSpeedZ = 0.0
+            character.jumpFlagZ = true
         }
         
         if characterPosition.x > GOAL_X + Float(STAGE_WIDTH) {
             labelGoal.isHidden = false
             goalCount += 1
         }
-        if (goalCount > 100) {
+        if goalCount > 100 || gameOverCount > 40 {
             changeScene = 3
         }
         if characterPosition.x > GOAL_X {
@@ -338,19 +367,37 @@ class SceneStage3 : BaseScene {
         }
         
         
-        for hurdle in translateDataHurdle {
-            if  hurdle.x + 1.0 >= characterPosition.x       &&
-                hurdle.x       <= characterPosition.x + 1.0 &&
-                hurdle.y + 1.0 >= characterPosition.y - 2.0 &&
-                hurdle.y       <= characterPosition.y - 2.0 &&
-                hurdle.z + 1.0 >= characterPosition.z       &&
-                hurdle.z       <= characterPosition.z
-            {
-                characterPosition.y = hurdle.y + 3.0
-                character.jumpSpeed = 0.0
+        if character.jumpSpeed != 0.0 && character.jumpSpeed < 0.0 {
+            for hurdle in translateDataHurdle {
+                if  hurdle.x + 0.9 >= characterPosition.x       &&
+                    hurdle.x       <= characterPosition.x + 0.9 &&
+                    hurdle.y + 1.0 >= characterPosition.y - 2.0 &&
+                    hurdle.y       <= characterPosition.y - 2.0 &&
+                    hurdle.z + 1.0 >= characterPosition.z       &&
+                    hurdle.z       <= characterPosition.z
+                {
+                    characterPosition.y = hurdle.y + 3.0
+                    character.jumpSpeed = 0.0
+                    character.jumpFlag = true
+                }
             }
         }
-        
+        if character.jumpSpeedZ != 0.0 && character.jumpSpeedZ < 0.0 {
+            for hurdle in translateDataHurdle {
+                if  hurdle.x + 0.9 >= characterPosition.x       &&
+                    hurdle.x       <= characterPosition.x + 0.9 &&
+                    hurdle.y + 1.0 >= characterPosition.y - 0.0 &&
+                    hurdle.y       <= characterPosition.y - 0.0 &&
+                    hurdle.z + 1.0 >= characterPosition.z - 1.0 &&
+                    hurdle.z       <= characterPosition.z - 1.0
+                {
+                    characterPosition.z = hurdle.z + 2.0
+                    character.jumpSpeedZ = 0.0
+                    character.jumpFlagZ = true
+                }
+            }
+        }
+
         
         
         

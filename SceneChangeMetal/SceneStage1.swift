@@ -226,15 +226,16 @@ class SceneStage1 : BaseScene {
         }
     }
     @objc func jumpYButton(sender: UIButton){
-        character.jumpSpeed = 0.3
-
-//        changeScene = 3
-        print("jumpY")
+        if character.jumpFlag {
+            character.jumpSpeed = 0.3
+            character.jumpFlag = false
+        }
     }
     @objc func jumpZButton(sender: UIButton){
-        character.jumpSpeedZ = 0.3
-//        changeScene = 3
-        print("jumpZ")
+        if character.jumpFlagZ {
+            character.jumpSpeedZ = 0.3
+            character.jumpFlagZ = false
+        }
     }
 
     override func draw(in view: MTKView, pipelineState: MTLRenderPipelineState, depthStencilState: MTLDepthStencilState) {
@@ -278,17 +279,19 @@ class SceneStage1 : BaseScene {
         eye.x = characterPosition.x
         target.x = characterPosition.x
 
-        characterPosition.y += character.jumpSpeed
-        character.jumpSpeed -= character.gravity
-        characterPosition.z += character.jumpSpeedZ
+        character.jumpSpeed  -= character.gravity
         character.jumpSpeedZ -= character.gravity
+        characterPosition.y += character.jumpSpeed
+        characterPosition.z += character.jumpSpeedZ
         if characterPosition.y < 0.0 {
             characterPosition.y = 0.0
             character.jumpSpeed = 0.0
+            character.jumpFlag = true
         }
         if characterPosition.z < -8.0 {
             characterPosition.z = -8.0
             character.jumpSpeedZ = 0.0
+            character.jumpFlagZ = true
         }
 
         if characterPosition.x > GOAL_X + Float(STAGE_WIDTH) {
@@ -304,9 +307,36 @@ class SceneStage1 : BaseScene {
             stage.updateRight(characterPosition: characterPosition)
         }
         
-        
-        
-        
+        if character.jumpSpeed != 0.0 && character.jumpSpeed < 0.0 {
+            for hurdle in translateDataHurdle {
+                if  hurdle.x + 0.9 >= characterPosition.x       &&
+                    hurdle.x       <= characterPosition.x + 0.9 &&
+                    hurdle.y + 1.0 >= characterPosition.y - 2.0 &&
+                    hurdle.y       <= characterPosition.y - 2.0 &&
+                    hurdle.z + 1.0 >= characterPosition.z       &&
+                    hurdle.z       <= characterPosition.z
+                {
+                    characterPosition.y = hurdle.y + 3.0
+                    character.jumpSpeed = 0.0
+                    character.jumpFlag = true
+                }
+            }
+        }
+        if character.jumpSpeedZ != 0.0 && character.jumpSpeedZ < 0.0 {
+            for hurdle in translateDataHurdle {
+                if  hurdle.x + 0.9 >= characterPosition.x       &&
+                    hurdle.x       <= characterPosition.x + 0.9 &&
+                    hurdle.y + 1.0 >= characterPosition.y - 0.0 &&
+                    hurdle.y       <= characterPosition.y - 0.0 &&
+                    hurdle.z + 1.0 >= characterPosition.z - 1.0 &&
+                    hurdle.z       <= characterPosition.z - 1.0
+                {
+                    characterPosition.z = hurdle.z + 2.0
+                    character.jumpSpeedZ = 0.0
+                    character.jumpFlagZ = true
+                }
+            }
+        }
         
         
         uniformBufferIndex = (uniformBufferIndex + 1) % maxBuffersInFlight

@@ -24,6 +24,12 @@
 		F45C399722CE148300315341 /* BebelCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399622CE148300315341 /* BebelCube.swift */; };
 		F45C399922D01BFC00315341 /* SceneStage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399822D01BFC00315341 /* SceneStage1.swift */; };
 		F45C399B22D047DB00315341 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C399A22D047DB00315341 /* Character.swift */; };
+		F4B2DD1322DDBC13008E2653 /* SceneStage5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1222DDBC13008E2653 /* SceneStage5.swift */; };
+		F4B2DD1522DDBCFD008E2653 /* Enemy3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1422DDBCFD008E2653 /* Enemy3.swift */; };
+		F4B2DD1722DDC773008E2653 /* SceneStage6.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1622DDC773008E2653 /* SceneStage6.swift */; };
+		F4B2DD1922DDC7A2008E2653 /* Enemy4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1822DDC7A2008E2653 /* Enemy4.swift */; };
+		F4B2DD1B22DEEE56008E2653 /* SceneStage7.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1A22DEEE56008E2653 /* SceneStage7.swift */; };
+		F4B2DD1D22DEEEA2008E2653 /* Enemy5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2DD1C22DEEEA2008E2653 /* Enemy5.swift */; };
 		F4CB916D22D5C8B300616C6C /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB916C22D5C8B300616C6C /* Stage.swift */; };
 		F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB916E22D5E7D000616C6C /* SceneStage2.swift */; };
 		F4CB917122D6077000616C6C /* SceneStage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917022D6077000616C6C /* SceneStage3.swift */; };
@@ -51,6 +57,12 @@
 		F45C399622CE148300315341 /* BebelCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BebelCube.swift; sourceTree = "<group>"; };
 		F45C399822D01BFC00315341 /* SceneStage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage1.swift; sourceTree = "<group>"; };
 		F45C399A22D047DB00315341 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F4B2DD1222DDBC13008E2653 /* SceneStage5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage5.swift; sourceTree = "<group>"; };
+		F4B2DD1422DDBCFD008E2653 /* Enemy3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy3.swift; sourceTree = "<group>"; };
+		F4B2DD1622DDC773008E2653 /* SceneStage6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage6.swift; sourceTree = "<group>"; };
+		F4B2DD1822DDC7A2008E2653 /* Enemy4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy4.swift; sourceTree = "<group>"; };
+		F4B2DD1A22DEEE56008E2653 /* SceneStage7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage7.swift; sourceTree = "<group>"; };
+		F4B2DD1C22DEEEA2008E2653 /* Enemy5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy5.swift; sourceTree = "<group>"; };
 		F4CB916C22D5C8B300616C6C /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		F4CB916E22D5E7D000616C6C /* SceneStage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage2.swift; sourceTree = "<group>"; };
 		F4CB917022D6077000616C6C /* SceneStage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage3.swift; sourceTree = "<group>"; };
@@ -109,7 +121,13 @@
 				F4CB917022D6077000616C6C /* SceneStage3.swift */,
 				F4CB917222D7326000616C6C /* Enemy1.swift */,
 				F43AE4A122D8854700DE3192 /* Enemy2.swift */,
+				F4B2DD1422DDBCFD008E2653 /* Enemy3.swift */,
+				F4B2DD1822DDC7A2008E2653 /* Enemy4.swift */,
 				F43AE4A322D885DC00DE3192 /* SceneStage4.swift */,
+				F4B2DD1222DDBC13008E2653 /* SceneStage5.swift */,
+				F4B2DD1622DDC773008E2653 /* SceneStage6.swift */,
+				F4B2DD1A22DEEE56008E2653 /* SceneStage7.swift */,
+				F4B2DD1C22DEEEA2008E2653 /* Enemy5.swift */,
 			);
 			path = SceneChangeMetal;
 			sourceTree = "<group>";
@@ -190,14 +208,20 @@
 				F45C397D22CDD0B800315341 /* Shaders.metal in Sources */,
 				F45C398F22CDD44F00315341 /* BaseScene.swift in Sources */,
 				F45C397922CDD0B800315341 /* Renderer.swift in Sources */,
+				F4B2DD1922DDC7A2008E2653 /* Enemy4.swift in Sources */,
 				F45C399B22D047DB00315341 /* Character.swift in Sources */,
 				F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */,
 				F4CB917322D7326000616C6C /* Enemy1.swift in Sources */,
 				F45C398D22CDD3A000315341 /* Scene1.swift in Sources */,
+				F4B2DD1D22DEEEA2008E2653 /* Enemy5.swift in Sources */,
 				F45C399322CE0A0C00315341 /* Matrix.swift in Sources */,
 				F45C399522CE147400315341 /* Cube.swift in Sources */,
 				F43AE4A222D8854700DE3192 /* Enemy2.swift in Sources */,
+				F4B2DD1722DDC773008E2653 /* SceneStage6.swift in Sources */,
+				F4B2DD1522DDBCFD008E2653 /* Enemy3.swift in Sources */,
+				F4B2DD1322DDBC13008E2653 /* SceneStage5.swift in Sources */,
 				F45C399122CDDCF800315341 /* Scene2.swift in Sources */,
+				F4B2DD1B22DEEE56008E2653 /* SceneStage7.swift in Sources */,
 				F45C399722CE148300315341 /* BebelCube.swift in Sources */,
 				F45C399922D01BFC00315341 /* SceneStage1.swift in Sources */,
 				F45C397B22CDD0B800315341 /* GameViewController.swift in Sources */,

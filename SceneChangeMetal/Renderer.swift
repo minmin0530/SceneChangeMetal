@@ -67,7 +67,7 @@ class Renderer: NSObject, MTKViewDelegate {
         super.init()
 
         mtkView = metalKitView
-        scene = SceneStage4(metalKitView: metalKitView)
+        scene = SceneStage7(metalKitView: metalKitView)
         scene?.setSize(size: mtkView!.drawableSize)
 
     }

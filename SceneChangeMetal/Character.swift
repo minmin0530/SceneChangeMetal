@@ -9,6 +9,8 @@
 import MetalKit
 
 class Character {
+    var jumpFlag: Bool = true
+    var jumpFlagZ: Bool = true
     var jumpSpeed: Float = 0.0
     var jumpSpeedZ: Float = 0.0
     var gravity: Float = 0.015
