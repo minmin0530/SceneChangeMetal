@@ -34,6 +34,10 @@
 		F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB916E22D5E7D000616C6C /* SceneStage2.swift */; };
 		F4CB917122D6077000616C6C /* SceneStage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917022D6077000616C6C /* SceneStage3.swift */; };
 		F4CB917322D7326000616C6C /* Enemy1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917222D7326000616C6C /* Enemy1.swift */; };
+		F4CB917522DF003300616C6C /* Ending.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917422DF003300616C6C /* Ending.swift */; };
+		F4CB917722DF010300616C6C /* StageEnding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917622DF010300616C6C /* StageEnding.swift */; };
+		F4CB917922DF06EA00616C6C /* Opening.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917822DF06EA00616C6C /* Opening.swift */; };
+		F4CB917B22DF078C00616C6C /* StageStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB917A22DF078C00616C6C /* StageStart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		F4CB916E22D5E7D000616C6C /* SceneStage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage2.swift; sourceTree = "<group>"; };
 		F4CB917022D6077000616C6C /* SceneStage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStage3.swift; sourceTree = "<group>"; };
 		F4CB917222D7326000616C6C /* Enemy1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy1.swift; sourceTree = "<group>"; };
+		F4CB917422DF003300616C6C /* Ending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ending.swift; sourceTree = "<group>"; };
+		F4CB917622DF010300616C6C /* StageEnding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageEnding.swift; sourceTree = "<group>"; };
+		F4CB917822DF06EA00616C6C /* Opening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opening.swift; sourceTree = "<group>"; };
+		F4CB917A22DF078C00616C6C /* StageStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,10 @@
 				F4B2DD1622DDC773008E2653 /* SceneStage6.swift */,
 				F4B2DD1A22DEEE56008E2653 /* SceneStage7.swift */,
 				F4B2DD1C22DEEEA2008E2653 /* Enemy5.swift */,
+				F4CB917422DF003300616C6C /* Ending.swift */,
+				F4CB917622DF010300616C6C /* StageEnding.swift */,
+				F4CB917822DF06EA00616C6C /* Opening.swift */,
+				F4CB917A22DF078C00616C6C /* StageStart.swift */,
 			);
 			path = SceneChangeMetal;
 			sourceTree = "<group>";
@@ -212,6 +224,8 @@
 				F45C399B22D047DB00315341 /* Character.swift in Sources */,
 				F4CB916F22D5E7D000616C6C /* SceneStage2.swift in Sources */,
 				F4CB917322D7326000616C6C /* Enemy1.swift in Sources */,
+				F4CB917922DF06EA00616C6C /* Opening.swift in Sources */,
+				F4CB917522DF003300616C6C /* Ending.swift in Sources */,
 				F45C398D22CDD3A000315341 /* Scene1.swift in Sources */,
 				F4B2DD1D22DEEEA2008E2653 /* Enemy5.swift in Sources */,
 				F45C399322CE0A0C00315341 /* Matrix.swift in Sources */,
@@ -222,9 +236,11 @@
 				F4B2DD1322DDBC13008E2653 /* SceneStage5.swift in Sources */,
 				F45C399122CDDCF800315341 /* Scene2.swift in Sources */,
 				F4B2DD1B22DEEE56008E2653 /* SceneStage7.swift in Sources */,
+				F4CB917B22DF078C00616C6C /* StageStart.swift in Sources */,
 				F45C399722CE148300315341 /* BebelCube.swift in Sources */,
 				F45C399922D01BFC00315341 /* SceneStage1.swift in Sources */,
 				F45C397B22CDD0B800315341 /* GameViewController.swift in Sources */,
+				F4CB917722DF010300616C6C /* StageEnding.swift in Sources */,
 				F45C397622CDD0B800315341 /* AppDelegate.swift in Sources */,
 				F4CB916D22D5C8B300616C6C /* Stage.swift in Sources */,
 			);
@@ -373,7 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A98KZDWY2P;
+				DEVELOPMENT_TEAM = ZSHW56Z6F8;
 				INFOPLIST_FILE = SceneChangeMetal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -392,7 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A98KZDWY2P;
+				DEVELOPMENT_TEAM = ZSHW56Z6F8;
 				INFOPLIST_FILE = SceneChangeMetal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
