@@ -16,6 +16,18 @@ let alignedUniformsSize = (MemoryLayout<Uniforms>.size & ~0xFF) + 0x100
 
 let maxBuffersInFlight = 3
 
+enum Scene {
+    case none
+    case opening
+    case stage1
+    case stage2
+    case stage3
+    case stage4
+    case stage5
+    case stage6
+    case stage7
+    case ending
+}
 enum RendererError: Error {
     case badVertexDescriptor
 }
@@ -127,35 +139,59 @@ class Renderer: NSObject, MTKViewDelegate {
 //            commandBuffer.addCompletedHandler { (_ commandBuffer)-> Swift.Void in
 //                semaphore.signal()
 //            }
-        if scene?.changeScene == 1 {
-            removeSubViews(mtkView: view)
-            scene = Scene2(metalKitView: scene!.mtkView!)
-            scene?.setSize(size: view.drawableSize)
-            scene?.changeScene = 0
-        }
-        if scene?.changeScene == 2 {
+        if scene?.changeScene == Scene.stage1 {
             removeSubViews(mtkView: view)
             scene = SceneStage1(metalKitView: scene!.mtkView!)
             scene?.setSize(size: view.drawableSize)
-            scene?.changeScene = 0
+            scene?.changeScene = Scene.none
         }
-        if scene?.changeScene == 3 {
-            removeSubViews(mtkView: view)
-            scene = Scene1(metalKitView: scene!.mtkView!)
-            scene?.setSize(size: view.drawableSize)
-            scene?.changeScene = 0
-        }
-        if scene?.changeScene == 4 {
+        if scene?.changeScene == Scene.stage2 {
             removeSubViews(mtkView: view)
             scene = SceneStage2(metalKitView: scene!.mtkView!)
             scene?.setSize(size: view.drawableSize)
-            scene?.changeScene = 0
+            scene?.changeScene = Scene.none
         }
-        if scene?.changeScene == 5 {
+        if scene?.changeScene == Scene.stage3 {
             removeSubViews(mtkView: view)
             scene = SceneStage3(metalKitView: scene!.mtkView!)
             scene?.setSize(size: view.drawableSize)
-            scene?.changeScene = 0
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.stage4 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage4(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.stage5 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage5(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.stage6 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage6(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.stage7 {
+            removeSubViews(mtkView: view)
+            scene = SceneStage7(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.ending {
+            removeSubViews(mtkView: view)
+            scene = Ending(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
+        }
+        if scene?.changeScene == Scene.opening {
+            removeSubViews(mtkView: view)
+            scene = Opening(metalKitView: scene!.mtkView!)
+            scene?.setSize(size: view.drawableSize)
+            scene?.changeScene = Scene.none
         }
 
     }

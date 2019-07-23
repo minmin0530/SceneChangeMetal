@@ -10,7 +10,7 @@ import MetalKit
 
 class BaseScene {
     var mtkView: MTKView?
-    var changeScene = 0
+    var changeScene:Scene = Scene.opening
     var windowSize: CGSize?
     init(metalKitView: MTKView) {
     }

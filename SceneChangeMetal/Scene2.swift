@@ -294,7 +294,7 @@ class Scene2: BaseScene {
     }
     
     @objc func sceneButton(sender: UIButton){
-        changeScene = 2
+        changeScene = Scene.opening
         print("changeScene")
     }
     var buttonScene:  UIButton = UIButton(frame: CGRect(x: 300, y: 700, width: 70, height: 30))

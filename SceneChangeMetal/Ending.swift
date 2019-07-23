@@ -146,6 +146,7 @@ class Ending : BaseScene {
     
     var buttonJumpY:  UIButton = UIButton(frame: CGRect(x:   0, y: 600, width: 70, height: 30))
     var buttonJumpZ:  UIButton = UIButton(frame: CGRect(x:   0, y: 700, width: 70, height: 30))
+    var buttonEnd:    UIButton = UIButton(frame: CGRect(x:   0, y: 500, width: 70, height: 30))
 //    var buttonLeft :  UIButton = UIButton(frame: CGRect(x:   0, y: 650, width: 70, height: 30))
 //    var buttonRight:  UIButton = UIButton(frame: CGRect(x: 100, y: 650, width: 70, height: 30))
     
@@ -210,7 +211,15 @@ class Ending : BaseScene {
         buttonJumpZ.layer.borderColor = UIColor.red.cgColor
         buttonJumpZ.layer.cornerRadius = 5.0
         mtkView?.addSubview(buttonJumpZ)
-        
+        buttonEnd.addTarget(self, action: #selector(endButton), for: .touchDown)
+        buttonEnd.setTitle("End", for: UIControl.State.normal)
+        buttonEnd.setTitleColor(UIColor.red, for: UIControl.State.normal)
+        buttonEnd.backgroundColor = UIColor.white
+        buttonEnd.layer.borderWidth = 2.0
+        buttonEnd.layer.borderColor = UIColor.red.cgColor
+        buttonEnd.layer.cornerRadius = 5.0
+        mtkView?.addSubview(buttonEnd)
+
         labelGoal.text = "制作 continue-jump"
         labelGoal.textColor = UIColor.red
         mtkView?.addSubview(labelGoal)
@@ -248,7 +257,10 @@ class Ending : BaseScene {
             character.jumpFlagZ = false
         }
     }
-    
+    @objc func endButton(sender: UIButton){
+        changeScene = Scene.opening
+    }
+
     override func draw(in view: MTKView, pipelineState: MTLRenderPipelineState, depthStencilState: MTLDepthStencilState) {
         var hitRightFlag = false
         for hurdle in translateDataHurdle {
@@ -310,7 +322,7 @@ class Ending : BaseScene {
             goalCount += 1
         }
         if (goalCount > 100) {
-            changeScene = 5
+            changeScene = Scene.opening
         }
         if characterPosition.x > GOAL_X {
             stage.updateGoal(characterPosition: characterPosition)
@@ -440,6 +452,7 @@ class Ending : BaseScene {
         windowSize = size
         buttonJumpY.frame.origin.x = size.width / 3 - 70.0
         buttonJumpZ.frame.origin.x = size.width / 3 - 70.0
+        buttonEnd.frame.origin.x = size.width / 3 - 70.0
     }
     
     

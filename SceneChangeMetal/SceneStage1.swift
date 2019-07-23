@@ -299,7 +299,7 @@ class SceneStage1 : BaseScene {
             goalCount += 1
         }
         if (goalCount > 100) {
-            changeScene = 4
+            changeScene = Scene.stage2
         }
         if characterPosition.x > GOAL_X {
             stage.updateGoal(characterPosition: characterPosition)

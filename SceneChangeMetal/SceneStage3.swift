@@ -357,8 +357,11 @@ class SceneStage3 : BaseScene {
             labelGoal.isHidden = false
             goalCount += 1
         }
-        if goalCount > 100 || gameOverCount > 40 {
-            changeScene = 3
+        if goalCount > 100 {
+            changeScene = Scene.stage4
+        }
+        if gameOverCount > 40 {
+            changeScene = Scene.stage3
         }
         if characterPosition.x > GOAL_X {
             stage.updateGoal(characterPosition: characterPosition)

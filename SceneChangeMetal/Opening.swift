@@ -141,7 +141,7 @@ class Opening : BaseScene {
     var light : float3 = float3(0.0, 0.0, 0.0)
     
     var goalCount: Int = 0
-    var labelGoal: UILabel = UILabel(frame: CGRect(x: 50, y: 200, width: 600, height: 200))
+    var labelGoal: UILabel = UILabel(frame: CGRect(x: 50, y: 50, width: 600, height: 200))
     
 //    var buttonJumpY:  UIButton = UIButton(frame: CGRect(x:   0, y: 600, width: 70, height: 30))
     var buttonJumpZ:  UIButton = UIButton(frame: CGRect(x:   0, y: 700, width: 70, height: 30))
@@ -241,7 +241,7 @@ class Opening : BaseScene {
     }
     @objc func jumpZButton(sender: UIButton){
         if character.jumpFlagZ {
-            changeScene = 5
+            changeScene = Scene.stage1
 
             character.jumpSpeedZ = 0.3
             character.jumpFlagZ = false
@@ -308,9 +308,9 @@ class Opening : BaseScene {
             labelGoal.isHidden = false
             goalCount += 1
         }
-        if (goalCount > 100) {
-            changeScene = 5
-        }
+//        if (goalCount > 100) {
+//            changeScene =
+//        }
         if characterPosition.x > GOAL_X {
             stage.updateGoal(characterPosition: characterPosition)
         } else {

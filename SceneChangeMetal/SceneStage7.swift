@@ -12,8 +12,12 @@ class SceneStage7 : BaseScene {
     var character = Character()
     var characterPosition = float3(5.0,0.0,-8.0)
     var characterFloor: Float = 0.0
+    var enemy1 = Enemy1()
+    var enemy1Position = float3(10.0,0.0,-8.0)
+    var enemy2 = Enemy2()
+    var enemy2Position = float3(15.0,0.0,-8.0)
     var enemy = Enemy5()
-    var enemyPosition = float3(10.0,0.0,-8.0)
+    var enemyPosition = float3(20.0,0.0,-8.0)
     var fire:[Cube] = [Cube(r: 1.0, g: 0.0, b: 0.0, a: 1.0, sx: 1.0, sy: 1.0, sz: 1.0)]
     var firePosition:[Position] = [Position(x:10.0,y:0.0,z:-8.0)]
     var fireOrigin: [[Original]] = [[Original(position: [0.0,0.0,0.0])]]
@@ -29,72 +33,71 @@ class SceneStage7 : BaseScene {
         Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
         Cube(r:1.0,g:0.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
         
-        
-        
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
-        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
+//        Cube(r:0.0,g:1.0,b:0.0,a:1.0,sx:1.0,sy:1.0,sz:1.0),
         
         ]
     var translateDataHurdle: [Position] = [
-        Position(x:GOAL_X/3.0 * 1.0 + 6.0,y: 0.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 7.0,y: 0.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 8.0,y: 0.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 12.0,y: 3.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 13.0,y: 3.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 14.0,y: 3.0,z: -8.0 ),
+        Position(x:17.0 + 6.0,y: 0.0,z: -8.0 ),
+        Position(x:17.0 + 7.0,y: 0.0,z: -8.0 ),
+        Position(x:17.0 + 8.0,y: 0.0,z: -8.0 ),
+        Position(x:17.0 + 12.0,y: 3.0,z: -8.0 ),
+        Position(x:17.0 + 13.0,y: 3.0,z: -8.0 ),
+        Position(x:17.0 + 14.0,y: 3.0,z: -8.0 ),
         
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -8.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -8.0 ),
-        
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -7.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -7.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -7.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -7.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -7.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -7.0 ),
-        
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -6.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -6.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -6.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -6.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -6.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -6.0 ),
-        
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -5.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -5.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -5.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -5.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -5.0 ),
-        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -8.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -8.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -8.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -8.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -8.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -8.0 ),
+//
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -7.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -7.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -7.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -7.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -7.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -7.0 ),
+//
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -6.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -6.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -6.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -6.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -6.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -6.0 ),
+//
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 5.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 4.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 3.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 2.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 1.0,z: -5.0 ),
+//        Position(x:GOAL_X/3.0 * 1.0 + 18.0,y: 0.0,z: -5.0 ),
         
         ]
     var originalDataHurdle: [[Original]] = [
@@ -105,33 +108,33 @@ class SceneStage7 : BaseScene {
         [Original(position: [0.0,0.0,0.0])],
         [Original(position: [0.0,0.0,0.0])],
         
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
-        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
+//        [Original(position: [0.0,0.0,0.0])],
         
         ]
     var dynamicUniformBufferArrayHurdle: [MTLBuffer]?
@@ -152,7 +155,7 @@ class SceneStage7 : BaseScene {
     
     var goalCount: Int = 0
     var gameOverCount: Int = 0
-    var labelGoal:     UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
+    var labelGoal:     UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 700, height: 200))
     var labelGameOver: UILabel = UILabel(frame: CGRect(x: 0, y: 300, width: 600, height: 200))
     
     var buttonJumpY:  UIButton = UIButton(frame: CGRect(x:   0, y: 600, width: 70, height: 30))
@@ -169,6 +172,8 @@ class SceneStage7 : BaseScene {
         
         let uniformBufferSize = alignedUniformsSize * maxBuffersInFlight
         character.initUniform(device: metalKitView.device!, uniformBufferSize: uniformBufferSize)
+        enemy1.initUniform(device: metalKitView.device!, uniformBufferSize: uniformBufferSize)
+        enemy2.initUniform(device: metalKitView.device!, uniformBufferSize: uniformBufferSize)
         enemy.initUniform(device: metalKitView.device!, uniformBufferSize: uniformBufferSize)
         stage.initUniform(device: metalKitView.device!, uniformBufferSize: uniformBufferSize)
         
@@ -233,7 +238,7 @@ class SceneStage7 : BaseScene {
         mtkView?.addSubview(buttonJumpZ)
         
         labelGoal.isHidden = true
-        labelGoal.text = "GOAL!!"
+        labelGoal.text = "Clear!"
         labelGoal.textColor = UIColor.red
         labelGoal.font = UIFont.boldSystemFont(ofSize: 128.0)
         mtkView?.addSubview(labelGoal)
@@ -279,6 +284,9 @@ class SceneStage7 : BaseScene {
         if enemy.live && enemyPosition.y == 0.0 {
             enemy.jumpSpeed = 0.3
         }
+        if enemy2.live && enemy2Position.y == 0.0 {
+            enemy2.jumpSpeed = 0.3
+        }
         firePosition[0].x -= 0.05
         firePosition[0].y += fireSpeedY
         if firePosition[0].y > -3.0 {
@@ -315,6 +323,32 @@ class SceneStage7 : BaseScene {
             characterPosition.x -= 0.2
             characterFloor = -5.0
         }
+        if  enemy1.live &&
+            enemy1Position.x + 1.0 >= characterPosition.x + 0.0 &&
+            enemy1Position.x       <= characterPosition.x + 1.0 &&
+            enemy1Position.y + 1.0 >= characterPosition.y + 0.0 &&
+            enemy1Position.y       <= characterPosition.y + 0.0 &&
+            enemy1Position.z + 1.0 >= characterPosition.z + 0.0 &&
+            enemy1Position.z       <= characterPosition.z + 0.0
+        {
+            character.jumpSpeed = 0.2
+            characterPosition.x -= 0.2
+            characterFloor = -5.0
+        }
+        if  enemy2.live &&
+            enemy2Position.x + 1.0 >= characterPosition.x + 0.0 &&
+            enemy2Position.x       <= characterPosition.x + 1.0 &&
+            enemy2Position.y + 1.0 >= characterPosition.y + 0.0 &&
+            enemy2Position.y       <= characterPosition.y + 0.0 &&
+            enemy2Position.z + 1.0 >= characterPosition.z + 0.0 &&
+            enemy2Position.z       <= characterPosition.z + 0.0
+        {
+            character.jumpSpeed = 0.2
+            characterPosition.x -= 0.2
+            characterFloor = -5.0
+        }
+
+        
         
         if characterFloor == -5.0 && characterPosition.y <= 0.0 {
             gameOverCount += 1
@@ -338,7 +372,41 @@ class SceneStage7 : BaseScene {
                 enemyPosition.y += enemy.jumpSpeed
             }
         }
-        
+        if  enemy1.live &&
+            enemy1Position.x + 1.0 >= characterPosition.x + 0.0 &&
+            enemy1Position.x       <= characterPosition.x + 1.0 &&
+            enemy1Position.y + 2.0 >= characterPosition.y + 0.0 &&
+            enemy1Position.y + 1.0 <= characterPosition.y + 0.0 &&
+            enemy1Position.z + 1.0 >= characterPosition.z + 0.0 &&
+            enemy1Position.z       <= characterPosition.z + 0.0
+        {
+            enemy1.live = false
+            enemy1.jumpSpeed = -0.1
+            character.jumpSpeed = 0.3
+        }
+        if !enemy1.live {
+            if enemy1Position.y > -5.0 {
+                enemy1Position.y += enemy1.jumpSpeed
+            }
+        }
+        if  enemy2.live &&
+            enemy2Position.x + 1.0 >= characterPosition.x + 0.0 &&
+            enemy2Position.x       <= characterPosition.x + 1.0 &&
+            enemy2Position.y + 2.0 >= characterPosition.y + 0.0 &&
+            enemy2Position.y + 1.0 <= characterPosition.y + 0.0 &&
+            enemy2Position.z + 1.0 >= characterPosition.z + 0.0 &&
+            enemy2Position.z       <= characterPosition.z + 0.0
+        {
+            enemy2.live = false
+            enemy2.jumpSpeed = -0.1
+            character.jumpSpeed = 0.3
+        }
+        if !enemy2.live {
+            if enemy2Position.y > -5.0 {
+                enemy2Position.y += enemy2.jumpSpeed
+            }
+        }
+
         
         var hitRightFlag = false
         for hurdle in translateDataHurdle {
@@ -388,6 +456,15 @@ class SceneStage7 : BaseScene {
                 enemy.jumpSpeed = 0.0
             }
         }
+        if enemy2.live {
+            enemy2.jumpSpeed -= enemy2.gravity
+            enemy2Position.y += enemy2.jumpSpeed
+            if enemy2Position.y < 0.0 {
+                enemy2Position.y = 0.0
+                enemy2.jumpSpeed = 0.0
+            }
+        }
+
         character.jumpSpeed  -= character.gravity
         character.jumpSpeedZ -= character.gravity
         characterPosition.y += character.jumpSpeed
@@ -407,8 +484,11 @@ class SceneStage7 : BaseScene {
             labelGoal.isHidden = false
             goalCount += 1
         }
-        if goalCount > 100 || gameOverCount > 40 {
-            changeScene = 3
+        if goalCount > 100 {
+            changeScene = Scene.ending
+        }
+        if gameOverCount > 40 {
+            changeScene = Scene.stage7
         }
         if characterPosition.x > GOAL_X {
             stage.updateGoal(characterPosition: characterPosition)
@@ -491,6 +571,8 @@ class SceneStage7 : BaseScene {
         }
         
         character.update(device: device, projectionMatrix: projectionMatrix, viewMatrix: viewMatrix, light: light, uniformBufferIndex: uniformBufferIndex, uniformBufferOffset: uniformBufferOffset, position: characterPosition)
+        enemy1.update(device: device, projectionMatrix: projectionMatrix, viewMatrix: viewMatrix, light: light, uniformBufferIndex: uniformBufferIndex, uniformBufferOffset: uniformBufferOffset, position: enemy1Position)
+        enemy2.update(device: device, projectionMatrix: projectionMatrix, viewMatrix: viewMatrix, light: light, uniformBufferIndex: uniformBufferIndex, uniformBufferOffset: uniformBufferOffset, position: enemy2Position)
         enemy.update(device: device, projectionMatrix: projectionMatrix, viewMatrix: viewMatrix, light: light, uniformBufferIndex: uniformBufferIndex, uniformBufferOffset: uniformBufferOffset, position: enemyPosition)
         stage.update(device: device, projectionMatrix: projectionMatrix, viewMatrix: viewMatrix, light: light, uniformBufferIndex: uniformBufferIndex, uniformBufferOffset: uniformBufferOffset, position: characterPosition)
         
@@ -549,6 +631,8 @@ class SceneStage7 : BaseScene {
         }
         
         character.draw(renderCommandEncoder: renderCommandEncoder!, uniformBufferOffset: uniformBufferOffset)
+        enemy1.draw(renderCommandEncoder: renderCommandEncoder!, uniformBufferOffset: uniformBufferOffset)
+        enemy2.draw(renderCommandEncoder: renderCommandEncoder!, uniformBufferOffset: uniformBufferOffset)
         enemy.draw(renderCommandEncoder: renderCommandEncoder!, uniformBufferOffset: uniformBufferOffset)
         stage.draw(renderCommandEncoder: renderCommandEncoder!, uniformBufferOffset: uniformBufferOffset)
         

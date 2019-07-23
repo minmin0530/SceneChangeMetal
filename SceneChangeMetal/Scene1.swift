@@ -29,7 +29,7 @@ class Scene1: BaseScene {
     }
     
     @objc func enterButton(sender: UIButton){
-        changeScene = 1
+        changeScene = Scene.opening
         print("enter")
     }
     
